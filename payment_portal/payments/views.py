@@ -50,18 +50,18 @@ def generate_invoice(request):
         form = InvoiceForm()
     return render(request, 'payments/generate_invoice.html', {'form': form})
 
-# def register(request):
-#     if request.method == 'POST':
-#         form = SignUpForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Your account has been created successfully.')
-#             return redirect('dashboard')  # Redirect to login page after successful registration
-#         else:
-#             messages.error(request, 'Please correct the errors below.')
-#     else:
-#         form = SignUpForm()
-#     return render(request, 'register.html', {'form': form})
+def register(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been created successfully.')
+            return redirect('dashboard')  # Redirect to login page after successful registration
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = SignUpForm()
+    return render(request, 'register.html', {'form': form})
 
 def register(request):
     return render(request, 'register.html')  # Ensure this view exists
@@ -76,7 +76,7 @@ def dashboard(request):
 
 
 def login_view(request):
-    return render(request, 'login.html')
+    return render(request, 'make_payment.html')
 
 # def register_view(request):
 #     return render(request, 'register.html')
