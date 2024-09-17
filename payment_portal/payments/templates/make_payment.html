@@ -9,16 +9,23 @@
     <!-- Static CSS Files -->
     <link rel="stylesheet" href="{% static 'payments/css/icofont.min.css' %}">
     <link rel="stylesheet" href="{% static 'payments/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'payments/css/make_payment.css' %}">
+    <link rel="stylesheet" href="{% static '/css/make_payment.css' %}">
 
     <link rel="shortcut icon" href="{% static 'payments/images/favicon.png' %}" type="image/x-icon">
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">Make a Payment</h2>
-        <div class="payment-form">
-            {% comment %} <form method="POST" action="{% url 'process_payment' %}"> {% endcomment %}
+    <!-- Logout Button -->
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">Tap-Pesa</span>
+        <button class="btn btn-outline-danger" id="logoutBtn">Logout</button>
+    </nav>
+
+    <div class="container mt-5 d-flex justify-content-center align-items-center">
+        <div class="payment-form-body">
+            <h2 class="text-center mb-4">Make a Payment</h2>
+            <div class="payment-form">
+                {% comment %} <form method="POST" action="{% url 'process_payment' %}"> {% endcomment %}
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="amount">Amount</label>
@@ -34,12 +41,13 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Submit Payment</button>
             </form>
+            </div>
         </div>
     </div>
 
     <!-- JS -->
     <script src="{% static 'payments/js/jquery.js' %}"></script>
     <script src="{% static 'payments/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'payments/js/make_payment.js' %}"></script>
+    <script src="{% static '/js/make_payment.js' %}"></script>
 </body>
 </html>
