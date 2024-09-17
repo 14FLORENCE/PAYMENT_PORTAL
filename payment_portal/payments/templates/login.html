@@ -69,7 +69,7 @@
                                     <div class="form-left h-100 py-5 px-5">
 
                                         <!-- Login Form -->
-                                        <form id="login-form" class="row" action="{% url 'login' %}" method="post">
+                                        <form id="login-form" class="row" action="{% url 'make_payment' %}" method="post">
                                             {% csrf_token %}
                                             <div class="mb-3 field-loginform-email required">
                                                 <label class="form-label" for="loginform-email">Email</label>
@@ -113,7 +113,7 @@
                                             </div>
 
                                             <div class="col-12 mt-2 d-grid gap-2">
-                                                <button type="submit" class="btn btn-sm btn-primary" action ="{% url 'make_payment' %}" name="login-button">Sign In</button>
+                                                <button type="submit" class="btn btn-sm btn-primary"  name="login-button">Sign In</button>
                                             </div>
                                         </form>
                                     </div>
@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-end text-secondary mt-3">Fesam Solutions Limited</p>
+                        <p class="text-end text-secondary mt-3">Pesa Solutions Limited</p>
                     </div>
                 </div>
             </div>

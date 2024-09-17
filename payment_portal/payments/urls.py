@@ -24,6 +24,6 @@ urlpatterns = [
 
     path('about/', views.about, name='about'),  # About Us page
     path('contact/', views.contact, name='contact'),  # Contact Us page
-    path('make/', views.make_payment, name='make_payment'),
+    path('make_payment/', views.make_payment, name='make_payment'),
     path('invoice/', views.generate_invoice, name='generate_invoice'),
 ]

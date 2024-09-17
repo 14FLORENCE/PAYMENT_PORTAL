@@ -63,8 +63,8 @@ def register(request):
         form = SignUpForm()
     return render(request, 'register.html', {'form': form})
 
-def register(request):
-    return render(request, 'register.html')  # Ensure this view exists
+# def register(request):
+#     return render(request, 'register.html')  # Ensure this view exists
 
 
 def dashboard(request):
@@ -75,7 +75,7 @@ def dashboard(request):
 #     return render(request, 'login.html')  # Adjust the template name as needed
 
 
-def login_view(request):
+def make_payment(request):
     return render(request, 'make_payment.html')
 
 # def register_view(request):
