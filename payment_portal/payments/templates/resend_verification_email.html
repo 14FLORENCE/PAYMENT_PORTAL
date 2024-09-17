@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Resend verification email</title>
+    <meta name="csrf-param" content="_csrf-frontend">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+
+    {% load static %}
+
+    <link href="{% static 'assets/91b010c3/dist/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/site.css' %}" rel="stylesheet">
+    <link href="{% static 'theme/css/icofont.min.css' %}" rel="stylesheet">
+</head>
+<body class="d-flex flex-column h-100">
+
+<header>
+    <nav id="w1" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard/">Tap-Pesa</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#w1-collapse" aria-controls="w1-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="w1-collapse" class="collapse navbar-collapse">
+                <ul id="w2" class="navbar-nav me-auto mb-2 mb-md-0 nav"></ul>
+                <div class="d-flex">
+                    <a class="btn btn-sm btn-primary login text-decoration-none m-2" href="login/">
+                        <i class="icofont-ui-unlock"></i> Sign In
+                    </a>
+                </div>
+                <div class="d-flex">
+                    <a class="btn btn-sm btn-primary login text-decoration-none" href="register">
+                        <i class="icofont-ui-edit"></i> Sign Up
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main role="main" class="flex-shrink-0">
+    <div class="container">
+        <div class="login-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <h1 class="mt-5 mb-3 text-center">Resend verification email</h1>
+                        <div class="bg-white shadow rounded">
+                            <div class="row">
+                                <div class="col-md-7 pe-0">
+                                    <div class="form-left h-100 py-5 px-5">
+                                        <form id="resend-verification-email-form" class="row" method="post" action="resend_verification_email">
+                                            {% csrf_token %}
+                                            <div class="mb-3 field-resendverificationemailform-email required">
+                                                <label class="form-label" for="resendverificationemailform-email">Email</label>
+                                                <input type="text" id="resendverificationemailform-email" class="form-control" name="email" aria-required="true">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <div class="my-1 mx-0 text-decoration-none" style="color:#999;">
+                                                    If you forgot your password you can <a href="/request_password_reset">reset it</a>.
+                                                    <br>
+                                                    I have a link? <a href="/login">Login</a>
+                                                    <br>
+                                                    You don't have an account? <a href="/register">Register</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-sm btn-primary" name="login-button">Send</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 ps-0 d-none d-md-block">
+                                    <div class="form-right h-100 bg-primary text-white text-center pt-5">
+                                        <i class="bi bi-bootstrap"></i>
+                                        <h2 class="fs-1 mt-5">Welcome Back!!!</h2>
+                                        <p>Please fill out your email. A verification email will be sent there.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-end text-secondary mt-3">Fesam Solutions Limited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer mt-auto py-3 text-muted">
+    <div class="container">
+        <p class="float-start">&copy; Tap-Pesa 2024</p>
+        <p class="float-end">Developed by <a href="https://fesam.co.tz" class="text-decoration-none">Fesam</a></p>
+    </div>
+</footer>
+
+<!-- Static JS scripts -->
+<script src="{% static 'assets/3ab5d7d3/jquery.js' %}"></script>
+<script src="{% static 'assets/1864cd24/yii.js' %}"></script>
+<script src="{% static 'assets/1864cd24/yii.validation.js' %}"></script>
+<script src="{% static 'assets/1864cd24/yii.activeForm.js' %}"></script>
+<script src="{% static 'assets/91b010c3/dist/js/bootstrap.bundle.js' %}"></script>
+
+<script>
+    jQuery(function ($) {
+        jQuery('#resend-verification-email-form').yiiActiveForm([
+            {
+                "id": "resendverificationemailform-email",
+                "name": "email",
+                "container": ".field-resendverificationemailform-email",
+                "input": "#resendverificationemailform-email",
+                "error": ".invalid-feedback",
+                "validate": function (attribute, value, messages, deferred, $form) {
+                    value = yii.validation.trim($form, attribute, {"skipOnArray": true, "skipOnEmpty": false, "chars": false}, value);
+                    yii.validation.required(value, messages, {"message": "Email cannot be blank."});
+                    yii.validation.email(value, messages, {
+                        "pattern": /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,
+                        "message": "Email is not a valid email address.",
+                        "enableIDN": false,
+                        "skipOnEmpty": 1
+                    });
+                }
+            }
+        ], {
+            "errorSummary": ".alert.alert-danger",
+            "errorCssClass": "is-invalid",
+            "successCssClass": "is-valid",
+            "validationStateOn": "input"
+        });
+    });
+</script>
+
+</body>
+</html>

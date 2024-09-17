@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Make Payment - Tap-Pesa</title>
+
+    {% load static %}
+    <!-- Static CSS Files -->
+    <link rel="stylesheet" href="{% static 'payments/css/icofont.min.css' %}">
+    <link rel="stylesheet" href="{% static 'payments/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'payments/css/make_payment.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'payments/images/favicon.png' %}" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Make a Payment</h2>
+        <div class="payment-form">
+            {% comment %} <form method="POST" action="{% url 'process_payment' %}"> {% endcomment %}
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="text" class="form-control" id="amount" name="amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="payment_method">Payment Method</label>
+                    <select class="form-control" id="payment_method" name="payment_method" required>
+                        <option value="m_pesa">M-Pesa</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="card">Credit/Debit Card</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'payments/js/jquery.js' %}"></script>
+    <script src="{% static 'payments/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'payments/js/make_payment.js' %}"></script>
+</body>
+</html>

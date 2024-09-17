@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign In</title>
+
+    <!-- CSRF Param and Token (Automatically managed by Django) -->
+    <meta name="csrf-param" content="csrfmiddlewaretoken">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+
+    <!-- Load static files -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'theme/css/icofont.min.css' %}">
+    <!-- Owl-Carosal-Style-link -->
+    <link rel="stylesheet" href="{% static 'theme/css/owl.carousel.min.css' %}">
+    <!-- Bootstrap-Style-link -->
+    <link rel="stylesheet" href="{% static 'theme/css/bootstrap.min.css' %}">
+    <!-- Aos-Style-link -->
+    <link rel="stylesheet" href="{% static 'theme/css/aos.css' %}">
+    <!-- Coustome-Style-link -->
+    <link rel="stylesheet" href="{% static 'theme/css/style.css' %}">
+    <!-- Responsive-Style-link -->
+    <link rel="stylesheet" href="{% static 'theme/css/responsive.css' %}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'theme/images/favicon.png' %}" type="image/x-icon">
+    <link href="{% static 'assets/91b010c3/dist/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/site.css' %}" rel="stylesheet">
+    <!-- CSS Files -->
+
+</head>
+<body class="d-flex flex-column h-100">
+
+<header>
+    <nav id="w1" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            {% comment %} <a class="navbar-brand" href="{% url 'dashboard' %}">Tap-Pesa</a> {% endcomment %}
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#w1-collapse" aria-controls="w1-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="w1-collapse" class="collapse navbar-collapse">
+                <ul id="w2" class="navbar-nav me-auto mb-2 mb-md-0 nav"></ul>
+                <div class="d-flex">
+                    <a class="btn btn-sm btn-primary login text-decoration-none m-2" href="/register/"><i class="icofont-ui-unlock"></i> Sign In</a>
+                </div>
+                <div class="d-flex">
+                    <a class="btn btn-sm btn-primary login text-decoration-none" href="/register/"><i class="icofont-ui-edit"></i> Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main role="main" class="flex-shrink-0">
+    <div class="container">
+        <div class="login-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <h1 class="mt-5 mb-3 text-center">Welcome back!</h1>
+                                <p class="text-center mb-3">Sign in to access your account. It's quick, easy, and hassle-free. Let's get started!</p>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded">
+                            <div class="row">
+                                <div class="col-md-7 pe-0">
+                                    <div class="form-left h-100 py-5 px-5">
+
+                                        <!-- Login Form -->
+                                        <form id="login-form" class="row" action="login/" method="post">
+                                            {% csrf_token %}
+                                            <div class="mb-3 field-loginform-email required">
+                                                <label class="form-label" for="loginform-email">Email</label>
+                                                <input type="email" id="loginform-email" class="form-control" name="email" aria-required="true">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="mb-3 field-password-input required">
+                                                <label class="form-label" for="password-input">Password</label>
+                                                <div class="input-group">
+                                                    <input type="password" id="password-input" class="form-control password-input" name="password" aria-required="true">
+                                                    <button class="btn btn-outline-secondary toggle-password" type="button">Show</button>
+                                                </div>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="mb-3 field-loginform-rememberme">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" id="loginform-rememberme" class="form-check-input" name="remember_me" value="1" checked>
+                                                        <label class="form-check-label" for="loginform-rememberme">Remember Me</label>
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Links for Forgot Password and Registration -->
+                                            <div class="col-sm-12">
+                                                <div class="row" style="color:#999;">
+                                                    <div class="col-lg-7">
+                                                        Need a new verification email?
+                                                        <a class="text-decoration-none" href="/resend_verification_email">Resend</a>
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        Forgot your password?
+                                                        <a class="text-decoration-none" href="/password_reset">Reset it</a>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        Don't have an account?
+                                                        <a class="text-decoration-none" href="{% url 'register' %}" >Register</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 mt-2 d-grid gap-2">
+                                                <button type="submit" class="btn btn-sm btn-primary" name="login-button">Sign In</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 ps-0 d-none d-md-block">
+                                    <div class="form-right h-100 bg-primary text-white text-center pt-5">
+                                        <i class="bi bi-bootstrap"></i>
+                                        <h2 class="fs-1 mt-5">Welcome Back!!!</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-end text-secondary mt-3">Fesam Solutions Limited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer mt-auto py-3 text-muted">
+    <div class="container">
+        <p class="float-start">&copy; Tap-Pesa 2024</p>
+        <p class="float-end">Developed by <a href="https://fesam.co.tz" class="text-decoration-none">Fesam</a></p>
+    </div>
+</footer>
+
+<!-- JavaScript files -->
+<script src="{% static 'assets/3ab5d7d3/jquery.js' %}"></script>
+<script src="{% static 'assets/1864cd24/yii.js' %}"></script>
+<script src="{% static 'assets/1864cd24/yii.validation.js' %}"></script>
+<script src="{% static 'assets/1864cd24/yii.activeForm.js' %}"></script>
+<script src="{% static 'assets/91b010c3/dist/js/bootstrap.bundle.js' %}"></script>
+
+<script>
+    // Password visibility toggle
+    jQuery(function ($) {
+        $('.toggle-password').on('click', function() {
+            var passwordField = $(this).closest('.input-group').find('.password-input');
+            var passwordFieldType = passwordField.attr('type');
+
+            if (passwordFieldType === 'password') {
+                passwordField.attr('type', 'text');
+                $(this).html('Hide');
+            } else {
+                passwordField.attr('type', 'password');
+                $(this).html('Show');
+            }
+        });
+    });
+</script>
+</body>
+</html>
