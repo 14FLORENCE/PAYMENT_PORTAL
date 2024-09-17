@@ -4,6 +4,8 @@ from . import views
 
 # app_name = 'payments'
 
+# test
+
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
      # Login URL (using Django's built-in login view)
