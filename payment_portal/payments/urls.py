@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 
-app_name = 'payments'
+# app_name = 'payments'
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
@@ -10,7 +10,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
 
     # Register URL (if you have a custom registration view)
-    path('register_view/', views.register_view, name='register_view'),
+    path('register/', views.register, name='register'),
 
     # Password reset URLs (Django provides built-in views)
     path('register/request_password_reset/', auth_views.PasswordResetView.as_view(), name='request_password_reset'),    path('/password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
