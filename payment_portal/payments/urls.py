@@ -22,7 +22,7 @@ urlpatterns = [
     # Resend verification email (if you have a custom view)
     path('register/resend_verification_email/', views.resend_verification_email, name='resend_verification_email'),
 
-    path('about/', views.about, name='about'),  # About Us page
+    path('home/', views.home, name='home'),  # About Us page
     path('contact/', views.contact, name='contact'),  # Contact Us page
     path('make_payment/', views.make_payment, name='make_payment'),
     path('invoice/', views.generate_invoice, name='generate_invoice'),

@@ -86,8 +86,8 @@ def request_password_reset(request):
 
 def resend_verification_email(request):
     return render(request, 'resend_verification_email.html')
-def about(request):
-    return render(request, 'about.html')  # Ensure 'about.html' exists in your templates directory
+def home(request):
+    return render(request, 'home.html')  # Ensure 'about.html' exists in your templates directory
 
 def contact(request):
     return render(request, 'contact.html')  # Ensure 'contact.html' exists in your templates directory
