@@ -5,10 +5,31 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django import forms
 from .forms import SignUpForm
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 import requests
+
+
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+
+        # Authenticate user
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            # Log in the user and redirect to the desired page
+            login(request, user)
+            return redirect('home')  # Redirect to home or the next page
+        else:
+            # Invalid login attempt
+            messages.error(request, 'Invalid email or password.')
+
+    return render(request, 'login.html')
+
 
 @login_required
 def dashboard(request):
@@ -50,29 +71,23 @@ def generate_invoice(request):
         form = InvoiceForm()
     return render(request, 'payments/generate_invoice.html', {'form': form})
 
+
 def register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your account has been created successfully.')
-            return redirect('dashboard')  # Redirect to login page after successful registration
+            form.save()  # This will save the user in the database
+            messages.success(request, 'Registration successful. Welcome to TAPPESA!')
+            return redirect('login')  # Redirect to the login page after successful registration
         else:
-            messages.error(request, 'Please correct the errors below.')
+            messages.error(request, 'There was an error in your registration. Please try again.')
     else:
         form = SignUpForm()
+
     return render(request, 'register.html', {'form': form})
-
-# def register(request):
-#     return render(request, 'register.html')  # Ensure this view exists
-
-
 def dashboard(request):
     return render(request, 'dashboard.html')
 
-# def login(request):
-#     # Handle login logic here
-#     return render(request, 'login.html')  # Adjust the template name as needed
 
 
 def make_payment(request):
@@ -86,8 +101,11 @@ def request_password_reset(request):
 
 def resend_verification_email(request):
     return render(request, 'resend_verification_email.html')
+
+
+@login_required  # Ensure that only logged-in users can access the home page
 def home(request):
-    return render(request, 'home.html')  # Ensure 'about.html' exists in your templates directory
+    return render(request, 'home.html')
 
 def contact(request):
     return render(request, 'contact.html')  # Ensure 'contact.html' exists in your templates directory

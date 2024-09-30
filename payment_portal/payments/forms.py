@@ -33,6 +33,5 @@ class SignUpForm(UserCreationForm):
         password_repeat = cleaned_data.get('password_repeat')
 
         if password and password_repeat and password != password_repeat:
-            raise ValidationError("Passwords do not match.")
-
+            self.add_error('password_repeat', "Passwords do not match")
         return cleaned_data

@@ -10,7 +10,7 @@ urlpatterns = [
     path('', views.dashboard, name='dashboard'),
      # Login URL (using Django's built-in login view)
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     # Register URL (if you have a custom registration view)
     path('register/', views.register, name='register'),
 

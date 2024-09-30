@@ -90,6 +90,11 @@ LOGGING = {
     },
 }
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+    'yourapp.backends.EmailBackend',  # Custom backend to authenticate with email
+)
+
 
 WSGI_APPLICATION = 'payment_portal.wsgi.application'
 
@@ -136,8 +141,9 @@ LANGUAGES = [
 ]
 
 # payments/settings.py
-LOGIN_REDIRECT_URL = '/'  # Redirect after successful login
-LOGOUT_REDIRECT_URL = '/dashboard'  # Redirect after logout
+LOGIN_URL ='login'
+LOGIN_REDIRECT_URL = '/home'  # Redirect after successful login
+LOGOUT_REDIRECT_URL =' url'  # Redirect after logout
 
 
 # Django PhoneNumberField Settings

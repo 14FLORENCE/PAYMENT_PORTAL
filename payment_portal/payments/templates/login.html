@@ -34,7 +34,7 @@
 <header>
     <nav id="w1" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
-            {% comment %} <a class="navbar-brand" href="{% url 'dashboard' %}">Tap-Pesa</a> {% endcomment %}
+            <a class="navbar-brand" href="{% url 'dashboard' %}">Tap-Pesa</a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#w1-collapse" aria-controls="w1-collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -69,21 +69,24 @@
                                     <div class="form-left h-100 py-5 px-5">
 
                                         <!-- Login Form -->
-                                        <form id="login-form" class="row" action="{% url 'home' %}" method="post">
+                                        <form id="login-form" class="row" action="{% url 'login' %}" method="post">
                                             {% csrf_token %}
+
                                             <div class="mb-3 field-loginform-email required">
                                                 <label class="form-label" for="loginform-email">Email</label>
-                                                <input type="email" id="loginform-email" class="form-control" name="email" aria-required="true">
+                                                <input type="email" id="loginform-email" class="form-control" name="email" aria-required="true" required>
                                                 <div class="invalid-feedback"></div>
                                             </div>
+
                                             <div class="mb-3 field-password-input required">
                                                 <label class="form-label" for="password-input">Password</label>
                                                 <div class="input-group">
-                                                    <input type="password" id="password-input" class="form-control password-input" name="password" aria-required="true">
+                                                    <input type="password" id="password-input" class="form-control password-input" name="password" aria-required="true" required>
                                                     <button class="btn btn-outline-secondary toggle-password" type="button">Show</button>
                                                 </div>
                                                 <div class="invalid-feedback"></div>
                                             </div>
+
                                             <div class="col-sm-12">
                                                 <div class="mb-3 field-loginform-rememberme">
                                                     <div class="form-check">
@@ -93,6 +96,11 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-sm-12">
+                                                <button type="submit" class="btn btn-primary">Sign In</button>
+                                            </div>
+
 
                                             <!-- Links for Forgot Password and Registration -->
                                             <div class="col-sm-12">
