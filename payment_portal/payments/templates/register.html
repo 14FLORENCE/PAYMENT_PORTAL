@@ -47,7 +47,7 @@
                     <div class="col-lg-10 offset-lg-1">
                         <div class="row justify-content-center">
                             <div class="col-lg-6">
-                                <h1 class="mt-5 mb-3 text-center">Get Start with TAPPESA</h1>
+                                <h1 class="mt-5 mb-3 text-center">Get Start with SWAY-PESA</h1>
                                 <p class="text-center mb-3">Free sign-up! Simplify transactions, secure payments, seamless integrations. Join us for growth, risk-free. Start today!</p>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                             <div class="row">
                                 <div class="col-md-8 pe-0">
                                     <div class="form-left h-100 py-5 px-5">
-                                        <form id="form-signup" class="row" action="{% url 'register' %}" method="POST">
+                                        <form id="form-signupform" class="row" action="{% url 'register' %}" method="POST">
                                             {% csrf_token %}
                                             {% if messages %}
                                                 <div class="alert alert-dismissible fade show">
